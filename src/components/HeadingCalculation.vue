@@ -58,7 +58,9 @@ export default {
       return (Math.trunc((Math.random() * 100000) / 5) * 5) % 1080;
     },
     newAnswer() {
-      return 100;
+      let rawAnswer =
+        this.currentHeading + (this.isLeft ? -1 : 1) * this.degreeDifference;
+      return ((rawAnswer % 360) + 360) % 360;
     },
   },
   created() {
@@ -80,7 +82,6 @@ export default {
 }
 .h-main {
   cursor: pointer;
-  border: solid 1px cornflowerblue;
   min-height: 50vh;
   display: flex;
   flex-direction: column;
