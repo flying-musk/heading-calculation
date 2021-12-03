@@ -29,6 +29,16 @@ export default {
       this.showAnswer = !this.showAnswer;
     },
   },
+  created() {
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowRight') {
+        this.nextQuestion();
+      }
+      if (e.code === 'Enter') {
+        this.toggleClick();
+      }
+    });
+  },
 };
 </script>
 
