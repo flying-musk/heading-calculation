@@ -3,23 +3,32 @@
     <h1>Heading calculation</h1>
     <p>Click on the question or press ENTER to get answer.</p>
     <p>Click on NEW or press RIGHT to get new questions.</p>
-    <div class="h-main">
+    <div class="h-main" v-if="!showAnswer" @click="toggleClick">
       <div class="main-content">72</div>
       <div class="main-content">Left turn</div>
       <div class="main-content">330</div>
     </div>
-    <!--
-    <div class="h-main">
+    <div class="h-main" v-if="showAnswer" @click="toggleClick">
       <div class="main-content">102</div>
     </div>
-    -->
-    <button class="main-button">NEW</button>
+    <button class="main-button" @click="nextQuestion">NEW</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HeadingCalculation',
+  data() {
+    return { showAnswer: false };
+  },
+  methods: {
+    nextQuestion() {
+      this.showAnswer = false;
+    },
+    toggleClick() {
+      this.showAnswer = !this.showAnswer;
+    },
+  },
 };
 </script>
 
